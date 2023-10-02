@@ -1,5 +1,11 @@
 {
   "name": "front_3",
+  "author": {
+    "email": "artsan.mcc@gmail.com",
+    "name": "Art San",
+    "url": ""
+  },
+  "description": "Интенсив Онлайн Кинотеатр",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -15,6 +21,7 @@
     "sass": "^1.68.0"
   },
   "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^4.2.0",
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
@@ -22,6 +29,7 @@
     "eslint": "latest",
     "eslint-config-next": "latest",
     "postcss": "latest",
+    "prettier": "^3.0.3",
     "tailwindcss": "latest",
     "typescript": "latest"
   }
