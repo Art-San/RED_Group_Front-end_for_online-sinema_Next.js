@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-	poweredByHeader: false,
+	// reactStrictMode: true, // Выключили что бы Next.js не ругался так как используем устаревшие библиотеки
+	poweredByHeader: false, // Отключили пробивку с помощью чего сделан сайт
 	optimizeFonts: false,
 	env: {
 		APP_URL: process.env.REACT_APP_URL,
