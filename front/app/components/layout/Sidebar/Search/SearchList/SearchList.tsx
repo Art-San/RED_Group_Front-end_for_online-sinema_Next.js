@@ -12,18 +12,16 @@ const SearchList: FC<{ movies: IMovie[] }> = ({ movies }) => {
 			{movies.length ? (
 				movies.map((movie) => (
 					<Link key={movie._id} href={`/movie/${movie.slug}`}>
-						<a>
-							<Image
-								src={movie.poster || ''}
-								width={50}
-								height={50}
-								objectFit="cover"
-								objectPosition="top"
-								alt={movie.title}
-								draggable={false}
-							/>
-							<span>{movie.title}</span>
-						</a>
+						<Image
+							src={movie.poster || ''}
+							width={50}
+							height={50}
+							objectFit="cover"
+							objectPosition="top"
+							alt={movie.title}
+							draggable={false}
+						/>
+						<span>{movie.title}</span>
 					</Link>
 				))
 			) : (
