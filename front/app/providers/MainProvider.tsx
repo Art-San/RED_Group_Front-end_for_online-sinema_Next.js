@@ -11,7 +11,7 @@ const queryClient = new QueryClient({
 	},
 })
 
-const MainProvider: FC = ({ children }) => {
+const MainProvider = ({ children }: { children: React.ReactNode }) => {
 	return (
 		<QueryClientProvider client={queryClient}>
 			<Layout>{children}</Layout>
