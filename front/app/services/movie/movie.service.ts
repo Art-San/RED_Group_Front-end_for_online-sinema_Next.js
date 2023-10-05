@@ -14,4 +14,13 @@ export const MovieService = {
 				: {},
 		})
 	},
+
+	async getMostPopularMovies() {
+		// Не отдавать data а то будет data.data лучше вот так data: movies
+		const { data: movies } = await axiosClassic.get<IMovie[]>(
+			getMoviesUrl(`/most-popular`)
+		)
+
+		return movies
+	},
 }
