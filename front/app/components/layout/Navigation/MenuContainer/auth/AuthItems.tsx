@@ -13,7 +13,7 @@ const AuthItems: FC = () => {
 
 	return (
 		<>
-			{/* {user ? (
+			{user ? (
 				<>
 					<MenuItem
 						item={{
@@ -26,9 +26,9 @@ const AuthItems: FC = () => {
 				</>
 			) : (
 				<MenuItem item={{ icon: 'MdLogin', link: '/auth', title: 'Login' }} />
-			)} */}
+			)}
 
-			{/* {user?.isAdmin && (
+			{user?.isAdmin && (
 				<MenuItem
 					item={{
 						icon: 'MdOutlineLock',
@@ -36,7 +36,7 @@ const AuthItems: FC = () => {
 						title: 'Admin panel',
 					}}
 				/>
-			)} */}
+			)}
 		</>
 	)
 }
