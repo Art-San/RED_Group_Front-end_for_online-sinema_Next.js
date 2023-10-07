@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useState } from 'react'
 
 import { useAuth } from '@/hooks/useAuth'
 
@@ -27,7 +27,6 @@ const AuthItems: FC = () => {
 			) : (
 				<MenuItem item={{ icon: 'MdLogin', link: '/auth', title: 'Login' }} />
 			)}
-
 			{user?.isAdmin && (
 				<MenuItem
 					item={{
@@ -40,5 +39,4 @@ const AuthItems: FC = () => {
 		</>
 	)
 }
-
 export default AuthItems
