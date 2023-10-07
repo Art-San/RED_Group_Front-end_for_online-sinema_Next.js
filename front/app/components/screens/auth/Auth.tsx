@@ -5,7 +5,7 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import Button from '@/components/ui/form-elements/Button'
 import Heading from '@/components/ui/heading/Heading'
 
-// import { useActions } from '@/hooks/useActions'
+import { useActions } from '@/hooks/useActions'
 import { useAuth } from '@/hooks/useAuth'
 
 import { Meta } from '@/utils/meta/Meta'
@@ -31,15 +31,7 @@ const Auth: FC = () => {
 		mode: 'onChange', //mode: 'onChange' Ошибки выводятся при заполнении формы, а не после отправки
 	})
 
-	const login = (data: any) => {
-		alert(data)
-		console.table(data)
-	}
-	const register = (data: any) => {
-		console.table(data)
-	}
-
-	// const { login, register } = useActions()
+	const { login, register } = useActions()
 
 	const onSubmit: SubmitHandler<IAuthInput> = (data) => {
 		if (type === 'login') login(data)
