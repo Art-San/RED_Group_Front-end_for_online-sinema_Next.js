@@ -15,7 +15,7 @@ const AuthItems: FC = () => {
 		<>
 			{user ? (
 				<>
-					<MenuItem
+					<MenuItem // Error: Text content does not match server-rendered HTML. hhh
 						item={{
 							icon: 'MdSettings',
 							link: '/profile',
@@ -28,7 +28,7 @@ const AuthItems: FC = () => {
 				<MenuItem item={{ icon: 'MdLogin', link: '/auth', title: 'Login' }} />
 			)}
 			{user?.isAdmin && (
-				<MenuItem
+				<MenuItem // Error: Text content does not match server-rendered HTML.
 					item={{
 						icon: 'MdOutlineLock',
 						link: getAdminHomeUrl(),
