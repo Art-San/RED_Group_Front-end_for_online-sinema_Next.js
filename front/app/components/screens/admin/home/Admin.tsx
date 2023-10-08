@@ -13,7 +13,7 @@ const Admin: FC = () => {
 			<AdminNavigation />
 			<Heading title="Some statistics" />
 
-			{/* <Statistics /> */}
+			<Statistics />
 		</Meta>
 	)
 }

@@ -34,7 +34,7 @@ const PopularMovie: FC = () => {
 				movie && (
 					<>
 						<h3>Opened {movie.countOpened} times</h3>
-						<Link href={getMovieUrl(movie.slug)}>
+						<Link href={getMovieUrl(movie.slug)} legacyBehavior>
 							<a>
 								<Image
 									width={285}
@@ -42,7 +42,7 @@ const PopularMovie: FC = () => {
 									src={movie.bigPoster}
 									alt={movie.title}
 									className={styles.image}
-									unoptimized
+									unoptimized //  в админке не нужно оптимизировать картинку она будет вставлена как тег img
 								/>
 							</a>
 						</Link>
