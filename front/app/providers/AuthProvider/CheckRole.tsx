@@ -15,16 +15,18 @@ const CheckRole: FC<TypeComponentAuthFields> = ({
 
 	const Children = () => <>{children}</>
 
-	if (!isOnlyAdmin && !isOnlyUser) return <Children />
+	// if (!isOnlyAdmin && !isOnlyUser) return <Children /> // Удалил во время урока 19:43, эта проверка есть
 
-	if (user?.isAdmin) return <Children />
+	if (user?.isAdmin) return <Children /> // админ может открывать любую страницу
 
 	if (isOnlyAdmin) {
-		router.pathname !== '/404' && router.replace('/404')
+		router.pathname !== '/404' && router.replace('/404') // .push можно вернуться назад
+		// Если pathname не равен /404 &&-то делаем .replace нет возможности вернуться назад
 		return null
+		// Это компонент по этому он должен вернуть JSX или NULL
 	}
 
-	const isUser = user && !user.isAdmin
+	const isUser = user && !user.isAdmin // есть user И он не является Admin, то это юзер
 
 	if (isUser && isOnlyUser) return <Children />
 	else {

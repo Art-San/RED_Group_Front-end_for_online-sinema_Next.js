@@ -8,7 +8,7 @@ import { useAuth } from '@/hooks/useAuth'
 
 import { TypeComponentAuthFields } from '@/shared/types/auth.types'
 
-const DynamicCheckRole = dynamic(() => import('./CheckRole'), { ssr: false })
+const DynamicCheckRole = dynamic(() => import('./CheckRole'), { ssr: false }) // Этот компонент загрузится только на клиентской части
 
 const AuthProvider: FC<TypeComponentAuthFields> = ({
 	children,
