@@ -1,6 +1,6 @@
 import { NextPage } from 'next'
 
-export type TypeRoles = { isOnlyAdmin?: boolean; isOnlyUser?: boolean }
+export type TypeRoles = { isOnlyAdmin?: boolean; isOnlyUser?: boolean } // 8:42
 
 export type NextPageAuth<P = {}> = NextPage<P> & TypeRoles
 
