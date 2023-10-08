@@ -21,7 +21,6 @@ const queryClient = new QueryClient({
 })
 
 const MainProvider: FC<TypeComponentAuthFields> = ({ children, Component }) => {
-	console.log('Component', Component)
 	return (
 		<HeadProvider>
 			<Provider store={store}>
