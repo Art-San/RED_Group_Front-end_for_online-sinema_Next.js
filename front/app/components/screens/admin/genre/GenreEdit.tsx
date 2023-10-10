@@ -1,10 +1,8 @@
-import { IGenreEditInput } from './genre-edit.interface'
-import { useGenreEdit } from './useGenreEdit'
 import dynamic from 'next/dynamic'
 import { FC } from 'react'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
-import { stripHtml } from 'string-strip-html'
 
+// import { stripHtml } from 'string-strip-html'
 import formStyles from '@/components/shared/admin/adminForm.module.scss'
 import SlugField from '@/components/ui/form-elements/SlugField/SlugField'
 import SkeletonLoader from '@/components/ui/skeleton-loader/SkeletonLoader'
@@ -14,17 +12,20 @@ import Button from '@/ui/form-elements/Button'
 import Field from '@/ui/form-elements/Field'
 import Heading from '@/ui/heading/Heading'
 
-import { Meta } from '@/utils/meta'
+import { Meta } from '@/utils/meta/Meta'
 import generateSlug from '@/utils/string/generateSlug'
+
+import { IGenreEditInput } from './genre-edit.interface'
+import { useGenreEdit } from './useGenreEdit'
 
 // "^[./]((?!scss).)*$",
 
-const DynamicTextEditor = dynamic(
-	() => import('@/ui/form-elements/TextEditor'),
-	{
-		ssr: false,
-	}
-)
+// const DynamicTextEditor = dynamic(
+// 	() => import('@/ui/form-elements/TextEditor'),
+// 	{
+// 		ssr: false,
+// 	}
+// )
 
 const GenreEdit: FC = () => {
 	const {
@@ -35,7 +36,7 @@ const GenreEdit: FC = () => {
 		setValue,
 		getValues,
 	} = useForm<IGenreEditInput>({
-		mode: 'onChange',
+		mode: 'onChange', // Показывать при изменении любого поля
 	})
 
 	const { isLoading, onSubmit } = useGenreEdit(setValue)
@@ -78,7 +79,8 @@ const GenreEdit: FC = () => {
 								style={{ width: '31%' }}
 							/>
 						</div>
-						<Controller
+
+						{/* <Controller // 10:30
 							name="description"
 							control={control}
 							defaultValue=""
@@ -100,7 +102,7 @@ const GenreEdit: FC = () => {
 										'Description is required!',
 								},
 							}}
-						/>
+						/> */}
 						<Button>Update</Button>
 					</>
 				)}

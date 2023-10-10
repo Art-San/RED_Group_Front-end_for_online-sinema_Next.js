@@ -1,4 +1,3 @@
-import { IGenreEditInput } from './genre-edit.interface'
 import { useRouter } from 'next/router'
 import { SubmitHandler, UseFormSetValue } from 'react-hook-form'
 import { useMutation, useQuery } from 'react-query'
@@ -10,6 +9,8 @@ import { toastError } from '@/utils/api/withToastrErrorRedux'
 import { getKeys } from '@/utils/object/getKeys'
 
 import { getAdminUrl } from '@/configs/url.config'
+
+import { IGenreEditInput } from './genre-edit.interface'
 
 export const useGenreEdit = (setValue: UseFormSetValue<IGenreEditInput>) => {
 	const { query, push } = useRouter()
@@ -28,7 +29,7 @@ export const useGenreEdit = (setValue: UseFormSetValue<IGenreEditInput>) => {
 			onError(error) {
 				toastError(error, 'Get genre')
 			},
-			enabled: !!query.id,
+			enabled: !!query.id, // Важный момент срабатывай только тогда когда будет !!query.id, ставим !! что бы точно не undefined
 		}
 	)
 
