@@ -19,4 +19,7 @@ export const GenreService = {
 	async deleteGenre(_id: string) {
 		return axios.delete<string>(getGenresUrl(`/${_id}`))
 	},
+
+	// 2:39
 }
+// 19. Редактирование жанра
