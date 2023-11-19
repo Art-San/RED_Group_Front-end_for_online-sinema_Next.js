@@ -24,6 +24,7 @@
 // 	)
 // 	return queryData
 // }
+// тут костыли
 import { useQuery } from 'react-query'
 
 import { GenreService } from '@/services/genre/genre.service'
@@ -39,6 +40,7 @@ export const usePopularGenres = () => {
 		{
 			select: ({ data }) =>
 				data
+					.filter((genre) => genre.icon)
 					.map(
 						(genre): IMenuItem => ({
 							icon: genre.icon,
