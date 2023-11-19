@@ -1,10 +1,11 @@
 import dynamic from 'next/dynamic'
 import { FC } from 'react'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
+import { stripHtml } from 'string-strip-html'
 
-// import { stripHtml } from 'string-strip-html'
 import formStyles from '@/components/shared/admin/adminForm.module.scss'
 import SlugField from '@/components/ui/form-elements/SlugField/SlugField'
+// import TextEditor from '@/components/ui/form-elements/TextEditor'
 import SkeletonLoader from '@/components/ui/skeleton-loader/SkeletonLoader'
 
 import AdminNavigation from '@/ui/admin-navigation/AdminNavigation'
@@ -20,12 +21,12 @@ import { useGenreEdit } from './useGenreEdit'
 
 // "^[./]((?!scss).)*$",
 
-// const DynamicTextEditor = dynamic(
-// 	() => import('@/ui/form-elements/TextEditor'),
-// 	{
-// 		ssr: false,
-// 	}
-// )
+const DynamicTextEditor = dynamic(
+	() => import('@/ui/form-elements/TextEditor'),
+	{
+		ssr: false,
+	}
+)
 
 const GenreEdit: FC = () => {
 	const {
@@ -80,7 +81,7 @@ const GenreEdit: FC = () => {
 							/>
 						</div>
 
-						{/* <Controller // 10:30
+						<Controller // 10:30
 							name="description"
 							control={control}
 							defaultValue=""
@@ -88,6 +89,12 @@ const GenreEdit: FC = () => {
 								field: { value, onChange },
 								fieldState: { error },
 							}) => (
+								// <TextEditor />/ такая ошибка ReferenceError: window is not defined
+								// 	placeholder="Description"
+								// 	onChange={onChange}
+								// 	error={error}
+								// 	value={value}
+								// />
 								<DynamicTextEditor
 									placeholder="Description"
 									onChange={onChange}
@@ -102,7 +109,7 @@ const GenreEdit: FC = () => {
 										'Description is required!',
 								},
 							}}
-						/> */}
+						/>
 						<Button>Update</Button>
 					</>
 				)}
