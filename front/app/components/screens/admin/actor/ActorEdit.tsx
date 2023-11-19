@@ -20,15 +20,6 @@ import generateSlug from '@/utils/string/generateSlug'
 import { IActorEditInput } from './actor-edit.interface'
 import { useActorEdit } from './useActorEdit'
 
-// "^[./]((?!scss).)*$",
-
-const DynamicTextEditor = dynamic(
-	() => import('@/ui/form-elements/TextEditor'),
-	{
-		ssr: false,
-	}
-)
-
 const ActorEdit: FC = () => {
 	const {
 		handleSubmit,
@@ -98,13 +89,6 @@ const ActorEdit: FC = () => {
 	)
 }
 
-// placeholder,
-// 	error,
-// 	style,
-// 	image,
-// 	folder,
-// 	onChange,
-// 	isNoImage = false
 export default ActorEdit
 
 // import { IActorEditInput } from './actor-edit.interface'
