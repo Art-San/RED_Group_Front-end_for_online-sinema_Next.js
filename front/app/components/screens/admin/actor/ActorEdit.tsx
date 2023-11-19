@@ -5,6 +5,7 @@ import { stripHtml } from 'string-strip-html'
 
 import formStyles from '@/components/shared/admin/adminForm.module.scss'
 import SlugField from '@/components/ui/form-elements/SlugField/SlugField'
+import UploadField from '@/components/ui/form-elements/UploadField/UploadField'
 // import TextEditor from '@/components/ui/form-elements/TextEditor'
 import SkeletonLoader from '@/components/ui/skeleton-loader/SkeletonLoader'
 
@@ -68,21 +69,20 @@ const ActorEdit: FC = () => {
 								error={errors.slug}
 							/>
 
-							{/* <Controller
-							name="photo"
-							control={control}
-							defaultValue=""
-							render={({
-								field: { value, onChange },
-								fieldState: { error },
-							}) => (
-							
-						// photo upload
-							)}
-							rules={{
-								required: 'Photo is required!'
-							}}
-						/> */}
+							<Controller
+								name="photo"
+								control={control}
+								defaultValue=""
+								render={({
+									field: { value, onChange },
+									fieldState: { error },
+								}) => (
+									<UploadField image={value} /> // 13:10
+								)}
+								rules={{
+									required: 'Photo is required!',
+								}}
+							/>
 						</div>
 						<Button>Update</Button>
 					</>
@@ -92,6 +92,13 @@ const ActorEdit: FC = () => {
 	)
 }
 
+// placeholder,
+// 	error,
+// 	style,
+// 	image,
+// 	folder,
+// 	onChange,
+// 	isNoImage = false
 export default ActorEdit
 
 // import { IActorEditInput } from './actor-edit.interface'
