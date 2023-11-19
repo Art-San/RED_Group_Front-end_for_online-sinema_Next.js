@@ -1,122 +1,168 @@
-// import dynamic from 'next/dynamic'
-// import { FC } from 'react'
-// import { Controller, SubmitHandler, useForm } from 'react-hook-form'
-// import { stripHtml } from 'string-strip-html'
+import dynamic from 'next/dynamic'
+import { FC } from 'react'
+import { Controller, SubmitHandler, useForm } from 'react-hook-form'
+import { stripHtml } from 'string-strip-html'
 
-// import formStyles from '@/components/shared/admin/adminForm.module.scss'
-// import SlugField from '@/components/ui/form-elements/SlugField/SlugField'
-// // import TextEditor from '@/components/ui/form-elements/TextEditor'
-// import SkeletonLoader from '@/components/ui/skeleton-loader/SkeletonLoader'
+import formStyles from '@/components/shared/admin/adminForm.module.scss'
+import SlugField from '@/components/ui/form-elements/SlugField/SlugField'
+import UploadField from '@/components/ui/form-elements/UploadField/UploadField'
+// import TextEditor from '@/components/ui/form-elements/TextEditor'
+import SkeletonLoader from '@/components/ui/skeleton-loader/SkeletonLoader'
 
-// import AdminNavigation from '@/ui/admin-navigation/AdminNavigation'
-// import Button from '@/ui/form-elements/Button'
-// import Field from '@/ui/form-elements/Field'
-// import Heading from '@/ui/heading/Heading'
+import AdminNavigation from '@/ui/admin-navigation/AdminNavigation'
+import Button from '@/ui/form-elements/Button'
+import Field from '@/ui/form-elements/Field'
+import Heading from '@/ui/heading/Heading'
 
-// import { Meta } from '@/utils/meta/Meta'
-// import generateSlug from '@/utils/string/generateSlug'
+import { Meta } from '@/utils/meta/Meta'
+import generateSlug from '@/utils/string/generateSlug'
 
-// import { IMovieEditInput } from './movie-edit.interface'
-// import { useMovieEdit } from './useMovieEdit'
+import { IMovieEditInput } from './movie-edit.interface'
+import { useAdminGenres } from './useAdminGenres'
+import { useMovieEdit } from './useMovieEdit'
 
-// const DynamicTextEditor = dynamic(
-// 	() => import('@/ui/form-elements/TextEditor'),
-// 	{
-// 		ssr: false,
-// 	}
-// )
+const MovieEdit: FC = () => {
+	const {
+		handleSubmit,
+		register,
+		formState: { errors },
+		control,
+		setValue,
+		getValues,
+	} = useForm<IMovieEditInput>({
+		mode: 'onChange', // Показывать при изменении любого поля
+	})
 
-// const MovieEdit: FC = () => {
-// 	const {
-// 		handleSubmit,
-// 		register,
-// 		formState: { errors },
-// 		control,
-// 		setValue,
-// 		getValues,
-// 	} = useForm<IMovieEditInput>({
-// 		mode: 'onChange', // Показывать при изменении любого поля
-// 	})
+	const { isLoading, onSubmit } = useMovieEdit(setValue)
 
-// 	const { isLoading, onSubmit } = useMovieEdit(setValue)
+	// const {} = useAdminGenres() // 7:40
 
-// 	return (
-// 		<Meta title="Edit movie">
-// 			<AdminNavigation />
-// 			<Heading title="Edit movie" />
-// 			<form onSubmit={handleSubmit(onSubmit)} className={formStyles.form}>
-// 				{isLoading ? (
-// 					<SkeletonLoader count={3} />
-// 				) : (
-// 					<>
-// 						<div className={formStyles.fields}>
-// 							<Field
-// 								{...register('name', {
-// 									required: 'Name is required!',
-// 								})}
-// 								placeholder="Name"
-// 								error={errors.name}
-// 								style={{ width: '31%' }}
-// 							/>
+	return (
+		<Meta title="Edit movie">
+			<AdminNavigation />
+			<Heading title="Edit movie" />
+			<form onSubmit={handleSubmit(onSubmit)} className={formStyles.form}>
+				{isLoading ? (
+					<SkeletonLoader count={3} />
+				) : (
+					<>
+						<div className={formStyles.fields}>
+							<Field
+								{...register('title', {
+									required: 'Title is required!',
+								})}
+								placeholder="Title"
+								error={errors.title}
+								style={{ width: '31%' }}
+							/>
 
-// 							<div style={{ width: '31%' }}>
-// 								<SlugField
-// 									generate={() =>
-// 										setValue('slug', generateSlug(getValues('name')))
-// 									}
-// 									register={register}
-// 									error={errors.slug}
-// 								/>
-// 							</div>
+							<SlugField
+								generate={() =>
+									setValue('slug', generateSlug(getValues('title')))
+								}
+								register={register}
+								error={errors.slug}
+							/>
 
-// 							<Field
-// 								{...register('icon', {
-// 									required: 'Icon is required!',
-// 								})}
-// 								placeholder="Icon"
-// 								error={errors.icon}
-// 								style={{ width: '31%' }}
-// 							/>
-// 						</div>
+							<Field
+								{...register('parameters.country', {
+									required: 'Country is required!',
+								})}
+								placeholder="Country"
+								error={errors.parameters?.country}
+								style={{ width: '31%' }}
+							/>
+							<Field
+								{...register('parameters.duration', {
+									required: 'Duration is required!',
+								})}
+								placeholder="Duration (min.)"
+								error={errors.parameters?.duration}
+								style={{ width: '31%' }}
+							/>
+							<Field
+								{...register('parameters.year', {
+									required: 'Year is required!',
+								})}
+								placeholder="Year"
+								error={errors.parameters?.year}
+								style={{ width: '31%' }}
+							/>
 
-// 						<Controller // 10:30
-// 							name="description"
-// 							control={control}
-// 							defaultValue=""
-// 							render={({
-// 								field: { value, onChange },
-// 								fieldState: { error },
-// 							}) => (
-// 								// <TextEditor />/ такая ошибка ReferenceError: window is not defined
-// 								// 	placeholder="Description"
-// 								// 	onChange={onChange}
-// 								// 	error={error}
-// 								// 	value={value}
-// 								// />
-// 								<DynamicTextEditor
-// 									placeholder="Description"
-// 									onChange={onChange}
-// 									error={error}
-// 									value={value}
-// 								/>
-// 							)}
-// 							rules={{
-// 								validate: {
-// 									required: (v) =>
-// 										(v && stripHtml(v).result.length > 0) ||
-// 										'Description is required!',
-// 								},
-// 							}}
-// 						/>
-// 						<Button>Update</Button>
-// 					</>
-// 				)}
-// 			</form>
-// 		</Meta>
-// 	)
-// }
+							<Controller
+								name="poster"
+								control={control}
+								defaultValue=""
+								render={({
+									field: { value, onChange },
+									fieldState: { error },
+								}) => (
+									<UploadField
+										placeholder="Poster"
+										error={error}
+										folder="movies"
+										image={value}
+										onChange={onChange}
+									/>
+								)}
+								rules={{
+									required: 'Poster is required!',
+								}}
+							/>
 
-// export default MovieEdit
+							<Controller
+								name="bigPoster"
+								control={control}
+								defaultValue=""
+								render={({
+									field: { value, onChange },
+									fieldState: { error },
+								}) => (
+									<UploadField
+										placeholder="Big poster"
+										error={error}
+										folder="movies"
+										image={value}
+										onChange={onChange}
+									/>
+								)}
+								rules={{
+									required: 'Big poster is required!',
+								}}
+							/>
+
+							<Controller
+								name="videoUrl"
+								control={control}
+								defaultValue=""
+								render={({
+									field: { value, onChange },
+									fieldState: { error },
+								}) => (
+									<UploadField
+										placeholder="Video"
+										error={error}
+										folder="movies"
+										image={value}
+										onChange={onChange}
+										style={{ marginTop: -25 }}
+										isNoImage
+									/>
+								)}
+								rules={{
+									required: 'Video is required!',
+								}}
+							/>
+						</div>
+						<Button>Update</Button>
+					</>
+				)}
+			</form>
+		</Meta>
+	)
+}
+
+export default MovieEdit
 
 // import dynamic from 'next/dynamic'
 // import { FC } from 'react'
@@ -264,49 +310,49 @@
 // 							}}
 // 						/>
 
-// 						<Controller
-// 							name="bigPoster"
-// 							control={control}
-// 							defaultValue=""
-// 							render={({
-// 								field: { value, onChange },
-// 								fieldState: { error },
-// 							}) => (
-// 								<UploadField
-// 									placeholder="Big poster"
-// 									error={error}
-// 									folder="movies"
-// 									image={value}
-// 									onChange={onChange}
-// 								/>
-// 							)}
-// 							rules={{
-// 								required: 'Big poster is required!',
-// 							}}
-// 						/>
+// <Controller
+// 	name="bigPoster"
+// 	control={control}
+// 	defaultValue=""
+// 	render={({
+// 		field: { value, onChange },
+// 		fieldState: { error },
+// 	}) => (
+// 		<UploadField
+// 			placeholder="Big poster"
+// 			error={error}
+// 			folder="movies"
+// 			image={value}
+// 			onChange={onChange}
+// 		/>
+// 	)}
+// 	rules={{
+// 		required: 'Big poster is required!',
+// 	}}
+// />
 
-// 						<Controller
-// 							name="videoUrl"
-// 							control={control}
-// 							defaultValue=""
-// 							render={({
-// 								field: { value, onChange },
-// 								fieldState: { error },
-// 							}) => (
-// 								<UploadField
-// 									placeholder="Video"
-// 									error={error}
-// 									folder="movies"
-// 									image={value}
-// 									onChange={onChange}
-// 									style={{ marginTop: -25 }}
-// 									isNoImage
-// 								/>
-// 							)}
-// 							rules={{
-// 								required: 'Video is required!',
-// 							}}
-// 						/>
+// <Controller
+// 	name="videoUrl"
+// 	control={control}
+// 	defaultValue=""
+// 	render={({
+// 		field: { value, onChange },
+// 		fieldState: { error },
+// 	}) => (
+// 		<UploadField
+// 			placeholder="Video"
+// 			error={error}
+// 			folder="movies"
+// 			image={value}
+// 			onChange={onChange}
+// 			style={{ marginTop: -25 }}
+// 			isNoImage
+// 		/>
+// 	)}
+// 	rules={{
+// 		required: 'Video is required!',
+// 	}}
+// />
 // 					</div>
 
 // 					<Button>Update</Button>
