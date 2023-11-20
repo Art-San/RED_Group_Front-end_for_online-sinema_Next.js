@@ -31,9 +31,7 @@ const ActorEdit: FC = () => {
 	} = useForm<IActorEditInput>({
 		mode: 'onChange', // Показывать при изменении любого поля
 	})
-
 	const { isLoading, onSubmit } = useActorEdit(setValue)
-
 	return (
 		<Meta title="Edit actor">
 			<AdminNavigation />
@@ -51,7 +49,6 @@ const ActorEdit: FC = () => {
 								placeholder="Name"
 								error={errors.name}
 							/>
-
 							<SlugField
 								generate={() =>
 									setValue('slug', generateSlug(getValues('name')))
@@ -59,7 +56,6 @@ const ActorEdit: FC = () => {
 								register={register}
 								error={errors.slug}
 							/>
-
 							<Controller
 								name="photo"
 								control={control}
@@ -88,11 +84,8 @@ const ActorEdit: FC = () => {
 		</Meta>
 	)
 }
-
 export default ActorEdit
 
-// import { IActorEditInput } from './actor-edit.interface'
-// import { useActorEdit } from './useActorEdit'
 // import { FC } from 'react'
 // import { Controller, useForm } from 'react-hook-form'
 
@@ -106,8 +99,11 @@ export default ActorEdit
 // import Field from '@/ui/form-elements/Field'
 // import Heading from '@/ui/heading/Heading'
 
-// import { Meta } from '@/utils/meta'
+// import { Meta } from '@/utils/meta/Meta'
 // import generateSlug from '@/utils/string/generateSlug'
+
+// import { IActorEditInput } from './actor-edit.interface'
+// import { useActorEdit } from './useActorEdit'
 
 // const ActorEdit: FC = () => {
 // 	const {
