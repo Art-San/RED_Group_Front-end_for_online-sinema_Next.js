@@ -11,6 +11,7 @@ const MaterialIcon: FC<{ name: TypeMaterialIconName }> = ({ name }) => {
 	const IconComponent = MaterialIcons[name]
 
 	if (isRenderClient)
+		// эта проверка тоже исправила ошибку
 		return <IconComponent /> || <MaterialIcons.MdDragIndicator />
 	else return null
 }
