@@ -26,7 +26,7 @@ export default Description
 // }) => {
 // 	return (
 // 		<div
-// 			className={`text-lg font-light text-white text-opacity-60 ${className}`}
+// 			className={`text-lg font-light text-white text-opacity-60 ${className}`} // тут без cn
 // 		>
 // 			<p>{parse(text)}</p> // Здесь не должно быть тега <p>
 // 		</div>
