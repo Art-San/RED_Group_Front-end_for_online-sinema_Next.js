@@ -27,6 +27,10 @@ export const MovieService = {
 		return movies
 	},
 
+	async getByActor(actorId: string) {
+		return axiosClassic.get<IMovie[]>(getMoviesUrl(`/by-actor/${actorId}`))
+	},
+
 	// Почему тут POST запрос а не гет говорит на 16:00 26 урок, Это у него лайв-хак такой он его и на beck-end замутил. Что бы передавать не в адресной строке, а в body
 	async getByGenres(genreIds: string[]) {
 		return axiosClassic.post<IMovie[]>(getMoviesUrl(`/by-genres`), {

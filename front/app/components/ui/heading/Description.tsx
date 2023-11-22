@@ -10,7 +10,7 @@ const Description: FC<{ text: string; className?: string }> = ({
 		<div
 			className={cn('text-lg font-light text-white text-opacity-60', className)}
 		>
-			<p>{parse(text)}</p>
+			{parse(text)} {/*// Здесь не должно быть тега <p>*/}
 		</div>
 	)
 }
@@ -28,7 +28,7 @@ export default Description
 // 		<div
 // 			className={`text-lg font-light text-white text-opacity-60 ${className}`}
 // 		>
-// 			<p>{parse(text)}</p>
+// 			<p>{parse(text)}</p> // Здесь не должно быть тега <p>
 // 		</div>
 // 	)
 // }
