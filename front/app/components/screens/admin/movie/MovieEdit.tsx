@@ -289,7 +289,7 @@ const MovieEdit: FC = () => {
 								<DynamicSelect
 									error={error}
 									field={field}
-									placeholder="Movies"
+									placeholder="Genre"
 									options={genres || []}
 									isLoading={isGenresLoading}
 									isMulti

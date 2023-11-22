@@ -11,8 +11,6 @@ import { getMovieUrl } from '@/configs/url.config'
 import styles from './Catalog.module.scss'
 import { ICatalog } from './catalog.types'
 
-// 04:18
-
 const Catalog: FC<ICatalog> = ({ title, description, movies }) => {
 	return (
 		<Meta title={title} description={description}>

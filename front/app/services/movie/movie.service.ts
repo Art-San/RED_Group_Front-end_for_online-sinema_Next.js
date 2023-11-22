@@ -27,6 +27,14 @@ export const MovieService = {
 		return movies
 	},
 
+	// Почему тут POST запрос а не гет говорит на 16:00 26 урок, Это у него лайв-хак такой он его и на beck-end замутил. Что бы передавать не в адресной строке, а в body
+	async getByGenres(genreIds: string[]) {
+		return axiosClassic.post<IMovie[]>(getMoviesUrl(`/by-genres`), {
+			genreIds,
+		})
+	},
+
+	// axios только для админа, axiosClassic для всех
 	async getById(_id: string) {
 		return axios.get<IMovieEditInput>(getMoviesUrl(`/${_id}`))
 	},
