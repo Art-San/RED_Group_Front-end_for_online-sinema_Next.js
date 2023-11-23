@@ -20,9 +20,9 @@ const ContentList: FC<IContentList> = ({ name, links }) => {
 		<div className={styles.list}>
 			<div className={styles.name}>{name}:</div>
 			<div className={styles.links}>
-				{links.slice(0, 3).map(({ link, title, _id }, idx) => (
+				{links.map(({ link, title, _id }, idx) => (
 					<Fragment key={_id}>
-						<Link href={link}>
+						<Link legacyBehavior href={link}>
 							<a>{title}</a>
 						</Link>
 						{idx + 1 !== links.length ? ', ' : ''}

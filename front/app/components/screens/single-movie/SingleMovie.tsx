@@ -8,10 +8,15 @@ import { Meta } from '@/utils/meta/Meta'
 
 import { IMoviePage } from '../../../../pages/movie/[slug]'
 
+import Content from './Content/Content'
+
 const SingleMovie: FC<IMoviePage> = ({ similarMovies, movie }) => {
 	return (
 		<Meta title={movie?.title} description={`Watch ${movie?.title}`}>
-			<Banner image={movie.bigPoster} />
+			<Banner
+				image={movie.bigPoster}
+				Detail={() => <Content movie={movie} />}
+			/>
 
 			{/* Video Player*/}
 
