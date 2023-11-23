@@ -1,5 +1,6 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+
 # dependencies
 front/node_modules
 front/.pnp
@@ -36,5 +37,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-back
+back/dist
+back/node_modules
+back/uploads/actors
+back/uploads/movies
+
 
