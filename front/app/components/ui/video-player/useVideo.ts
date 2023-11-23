@@ -70,6 +70,7 @@ export const useVideo = () => {
 
 	useEffect(() => {
 		const handleKeyDown = (e: KeyboardEvent) => {
+			console.log(e.key) // жмем на кнопку и получим название
 			switch (e.key) {
 				case 'ArrowRight': {
 					forward()
@@ -82,7 +83,7 @@ export const useVideo = () => {
 				}
 
 				case ' ': {
-					e.preventDefault()
+					e.preventDefault() // отключает стандартные действия с кнопок
 					toggleVideo()
 					break
 				}

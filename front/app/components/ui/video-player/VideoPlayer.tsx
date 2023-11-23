@@ -25,8 +25,8 @@ const VideoPlayer: FC<IVideoPlayer> = ({ videoSource, slug }) => {
 					<video
 						ref={videoRef}
 						className={styles.video}
-						src={`${videoSource}#t=8`}
-						preload="metadata"
+						src={`${videoSource}#t=8`} // плеер запустится на 8 м/с
+						preload="metadata" // Плеер запустится на 8 м/с
 					/>
 
 					<div className={styles.progressBarContainer}>
@@ -84,7 +84,7 @@ const VideoPlayer: FC<IVideoPlayer> = ({ videoSource, slug }) => {
 	)
 }
 
-// If you wanna add change quality buttons
+// Если вы хотите добавить кнопки изменения качества
 //kmoskwiak.github.io/videojs-resolution-switcher/
 //https://stackoverflow.com/questions/38626993/change-video-quality-with-sources-pointing-to-different-quality-versions
 

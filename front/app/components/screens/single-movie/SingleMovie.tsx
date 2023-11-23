@@ -3,6 +3,7 @@ import { FC } from 'react'
 import Banner from '@/components/ui/banner/Banner'
 import Gallery from '@/components/ui/gallery/Gallery'
 import SubHeading from '@/components/ui/heading/SubHeading'
+import VideoPlayer from '@/components/ui/video-player/VideoPlayer'
 
 import { Meta } from '@/utils/meta/Meta'
 
@@ -19,6 +20,7 @@ const SingleMovie: FC<IMoviePage> = ({ similarMovies, movie }) => {
 			/>
 
 			{/* Video Player*/}
+			<VideoPlayer slug={movie.slug} videoSource={movie.videoUrl} />
 
 			<div className="mt-12">
 				<SubHeading title="Similar" />
