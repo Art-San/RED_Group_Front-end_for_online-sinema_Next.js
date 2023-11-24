@@ -37,6 +37,8 @@ export class RatingService {
 	}
 
 	async setRating(userId: Types.ObjectId, dto: SetRatingDto) {
+		console.log('userId', userId)
+		console.log('movieId', dto)
 		const { movieId, value } = dto
 
 		const newRating = await this.ratingModel
@@ -55,6 +57,7 @@ export class RatingService {
 			)
 			.exec() // это обязательно
 
+		console.log('newRating', newRating)
 		const averageRating = await this.averageRatingByMovie(movieId)
 
 		await this.movieService.updateRating(movieId, averageRating)

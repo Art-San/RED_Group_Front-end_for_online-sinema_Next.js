@@ -70,7 +70,7 @@ export const useVideo = () => {
 
 	useEffect(() => {
 		const handleKeyDown = (e: KeyboardEvent) => {
-			console.log(e.key) // жмем на кнопку и получим название
+			// console.log(e.key) // жмем на кнопку и получим название
 			switch (e.key) {
 				case 'ArrowRight': {
 					forward()

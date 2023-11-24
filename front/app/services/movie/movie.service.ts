@@ -41,6 +41,12 @@ export const MovieService = {
 			genreIds,
 		})
 	},
+	// update-count-opened
+	async updateCountOpened(slug: string) {
+		return axiosClassic.put(getMoviesUrl('/update-count-opened'), {
+			slug,
+		})
+	},
 
 	// axios только для админа, axiosClassic для всех
 	async getById(_id: string) {
