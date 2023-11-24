@@ -57,7 +57,6 @@ export class RatingService {
 			)
 			.exec() // это обязательно
 
-		console.log('newRating', newRating)
 		const averageRating = await this.averageRatingByMovie(movieId)
 
 		await this.movieService.updateRating(movieId, averageRating)
