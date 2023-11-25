@@ -68,20 +68,19 @@ export class GenreService {
 	// 	throw new HttpException('ошибка здесь', 200)
 	// }
 
-	async getCollections(): Promise<ICollection[]> {
+	async getCollections() {
 		const genres = await this.getAll()
-
 		const collections = await Promise.all(
 			genres.map(async (genre) => {
 				const moviesByGenre = await this.movieService.byGenres([genre._id])
+				console.log('moviesByGenr', moviesByGenre[0].bigPoster)
 
 				const result: ICollection = {
 					_id: String(genre._id),
-					title: genre.name,
-					slug: genre.slug,
 					image: moviesByGenre[0].bigPoster,
+					slug: genre.slug,
+					title: genre.name,
 				}
-
 				return result
 			})
 		)
