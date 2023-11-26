@@ -70,6 +70,7 @@ export class GenreService {
 
 	async getCollections() {
 		const genres = await this.getAll()
+		// console.log('genres', genres)
 		const collections = await Promise.all(
 			genres.map(async (genre) => {
 				const moviesByGenre = await this.movieService.byGenres([genre._id])

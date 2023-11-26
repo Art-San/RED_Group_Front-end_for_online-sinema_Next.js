@@ -21,7 +21,7 @@ const GenresPage: NextPage<{ collections: ICollection[] }> = ({
 export const getStaticProps: GetStaticProps = async () => {
 	try {
 		const { data: collections } = await GenreService.getCollections()
-		console.log('collections', collections)
+		// console.log('collections из GenresPage', collections)
 
 		return {
 			props: { collections },
