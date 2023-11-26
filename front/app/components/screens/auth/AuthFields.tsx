@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { FormState, UseFormRegister } from 'react-hook-form'
+import { FieldError, FormState, UseFormRegister } from 'react-hook-form'
 
 import Field from '@/components/ui/form-elements/Field'
 
@@ -27,7 +27,7 @@ const AuthFields: FC<IAuthFields> = ({
 					},
 				})}
 				placeholder="E-mail"
-				error={errors.email}
+				error={errors.email as FieldError}
 			/>
 			<Field
 				{...register(
@@ -44,7 +44,7 @@ const AuthFields: FC<IAuthFields> = ({
 				)}
 				placeholder="Password"
 				type="password"
-				error={errors.password}
+				error={errors.password as FieldError}
 			/>
 		</>
 	)

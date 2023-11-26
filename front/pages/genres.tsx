@@ -25,6 +25,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
 		return {
 			props: { collections },
+			revalidate: 60, // Пере сборка через 60 сек
 		}
 	} catch (e) {
 		// console.log(errorCatch(e))

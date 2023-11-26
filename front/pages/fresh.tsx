@@ -22,6 +22,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 		return {
 			props: { movies },
+			revalidate: 60, // Пере сборка через 60 сек
 		}
 	} catch (e) {
 		// console.log(errorCatch(e))

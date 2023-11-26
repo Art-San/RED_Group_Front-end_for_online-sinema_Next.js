@@ -25,8 +25,6 @@ const HomePage: NextPage<IHome> = ({ slides, trendingMovies, actors }) => {
 export const getStaticProps: GetStaticProps = async () => {
 	try {
 		const { data: movies } = await MovieService.getAll()
-		const { data: dataActors } = await ActorService.getAll()
-		const dataTrendingMovies = await MovieService.getMostPopularMovies()
 
 		const slides: ISlide[] = movies.slice(0, 4).map((m) => ({
 			_id: m._id,
@@ -35,6 +33,8 @@ export const getStaticProps: GetStaticProps = async () => {
 			subTitle: getGenresList(m.genres),
 			title: m.title,
 		}))
+
+		const { data: dataActors } = await ActorService.getAll()
 
 		const actors: IGalleryItem[] = dataActors.slice(0, 7).map((a) => ({
 			name: a.name,
@@ -45,6 +45,8 @@ export const getStaticProps: GetStaticProps = async () => {
 				subTitle: `+${a.countMovies} movies`,
 			},
 		}))
+
+		const dataTrendingMovies = await MovieService.getMostPopularMovies()
 
 		const trendingMovies: IGalleryItem[] = dataTrendingMovies
 			.slice(0, 7)
@@ -60,6 +62,7 @@ export const getStaticProps: GetStaticProps = async () => {
 				trendingMovies,
 				slides,
 			} as IHome,
+			revalidate: 60, // Пере сборка через 60 сек
 		}
 	} catch (error) {
 		console.log(errorCatch(error))
