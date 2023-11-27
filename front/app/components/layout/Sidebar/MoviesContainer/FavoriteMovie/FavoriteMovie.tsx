@@ -9,7 +9,7 @@ import MovieList from '../MovieList'
 
 import NotAuthFavorites from './NotAuthFavorites'
 
-const FavoriteMovieList: FC = () => {
+const FavoriteMovie: FC = () => {
 	const { isLoading, favoritesMovies } = useFavorites()
 	const { user } = useAuth()
 
@@ -36,4 +36,4 @@ const FavoriteMovieList: FC = () => {
 	)
 }
 
-export default FavoriteMovieList
+export default FavoriteMovie
