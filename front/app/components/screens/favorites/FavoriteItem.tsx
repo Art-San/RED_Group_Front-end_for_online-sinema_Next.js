@@ -9,7 +9,6 @@ import { getMovieUrl } from '@/configs/url.config'
 import FavoriteButton from '../single-movie/FavoriteButton/FavoriteButton'
 
 import styles from './Favorites.module.scss'
-import { IFavoriteItem } from './favorites.interface'
 
 // 7:04
 const FavoriteItem: FC<{ movie: IMovie }> = ({ movie }) => {
