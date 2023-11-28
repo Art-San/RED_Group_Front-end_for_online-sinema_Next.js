@@ -9,7 +9,7 @@ $shadow:
 	@apply flex flex-wrap items-center mt-10;
 
 	> a {
-		@apply mr-8 animate-fade;
+		@apply mr-6 animate-fade;
 	}
 
 	> a:nth-child(3n) {
@@ -19,7 +19,7 @@ $shadow:
 
 .collection {
 	@apply relative flex items-end mb-10 h-44 transition-transform;
-	width: 31%;
+	width: 30%;
 
 	@include fade-bg-gradient(0deg);
 	&::before {
