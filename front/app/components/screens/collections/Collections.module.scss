@@ -19,7 +19,7 @@ $shadow:
 
 .collection {
 	@apply relative flex items-end mb-10 h-44 transition-transform;
-	width: 30%;
+	width: 31%;
 
 	@include fade-bg-gradient(0deg);
 	&::before {

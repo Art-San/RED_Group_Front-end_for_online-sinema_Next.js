@@ -20,7 +20,7 @@ import FavoriteMovie from './FavoriteMovie/FavoriteMovie'
 import PopularMovie from './PopularMovie'
 
 const DynamicFavoriteMovie = dynamic(
-	// использовали dynamic чтоб решить проблемы выше
+	// использовали dynamic чтоб решить проблемы выше.
 	() => import('./FavoriteMovie/FavoriteMovie'),
 	{
 		ssr: false,
