@@ -1,6 +1,9 @@
-import Image from "next/legacy/image"
+import dynamic from 'next/dynamic'
+import Image from 'next/legacy/image'
 import Link from 'next/link'
 import { FC } from 'react'
+
+import { useAuth } from '@/hooks/useAuth'
 
 import { IMovie } from '@/shared/types/movie.types'
 
@@ -10,11 +13,21 @@ import FavoriteButton from '../single-movie/FavoriteButton/FavoriteButton'
 
 import styles from './Favorites.module.scss'
 
+// const DynamicFavoriteButton = dynamic(
+// 	// использовали dynamic чтоб решить проблемы выше.
+// 	() => import('../single-movie/FavoriteButton/FavoriteButton'),
+// 	{
+// 		ssr: false,
+// 	}
+// )
+
 // 7:04
 const FavoriteItem: FC<{ movie: IMovie }> = ({ movie }) => {
+	const { user } = useAuth()
 	return (
 		<div className={styles.itemWrapper}>
-			<FavoriteButton movieId={movie._id} />
+			{/* {user && <DynamicFavoriteButton movieId={movie._id} />} */}
+			{user && <FavoriteButton movieId={movie._id} />}
 			<Link legacyBehavior href={getMovieUrl(movie.slug)}>
 				<a className={styles.item}>
 					<Image
@@ -33,35 +46,3 @@ const FavoriteItem: FC<{ movie: IMovie }> = ({ movie }) => {
 }
 
 export default FavoriteItem
-
-// import Image from 'next/image'
-// import Link from 'next/link'
-// import { FC } from 'react'
-
-// import FavoriteButton from '../single-movie/FavoriteButton/FavoriteButton'
-
-// import styles from './Favorites.module.scss'
-// import { IFavoriteItem } from './favorites.interface'
-
-// const FavoriteItem: FC<{ item: IFavoriteItem }> = ({ item }) => {
-// 	return (
-// 		<div className={styles.itemWrapper}>
-// 			<FavoriteButton movieId={item._id} />
-// 			<Link href={item.link}>
-// 				<a className={styles.item}>
-// 					<Image
-// 						alt={item.name}
-// 						src={item.posterPath}
-// 						layout="fill"
-// 						draggable={false}
-// 						priority
-// 					/>
-
-// 					<div className={styles.title}>{item.title}</div>
-// 				</a>
-// 			</Link>
-// 		</div>
-// 	)
-// }
-
-// export default FavoriteItem

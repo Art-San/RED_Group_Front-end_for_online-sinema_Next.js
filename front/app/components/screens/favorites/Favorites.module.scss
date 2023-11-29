@@ -8,18 +8,18 @@
 	@apply w-full flex flex-wrap;
 
 	.skeletonLoader {
-		@apply relative mb-8 h-44;
+		@apply relative rounded-layout mb-8 h-44;
 		width: 31%;
 
 		&:nth-child(1),
 		&:nth-child(3) {
-			@apply mr-8;
+			@apply mr-6;
 		}
 	}
 }
 
 .itemWrapper {
-	@apply relative mb-8 h-44 mr-8 animate-fade transition-transform hover:-translate-y-3;
+	@apply relative mb-8 h-44 mr-6 animate-fade transition-transform hover:-translate-y-3;
 	width: 31%;
 
 	&:nth-child(3n) {

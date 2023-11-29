@@ -10,8 +10,8 @@ const TrendingPage: NextPage<{ movies: IMovie[] }> = ({ movies }) => {
 	return (
 		<Catalog
 			movies={movies || []}
-			title="Trending movies"
-			description="Trending movies in excellent quality: legal, safe, without ads"
+			title="Популярные фильмы"
+			description="Трендовые фильмы в отличном качестве: легально, безопасно, без рекламы."
 		/>
 	)
 }

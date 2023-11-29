@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Link from 'next/link'
 import NextProgressBar from 'nextjs-progressbar'
 
 import { accentColor } from '@/configs/constants'
@@ -19,6 +20,7 @@ const HeadProvider = ({ children }: { children: React.ReactNode }) => {
 				<meta
 					name="viewport"
 					content="width=device-width, initial-scale=1, maximum-scale=1.0"
+					// content="width=device-width, initial-scale=1, maximum-scale=5" // maximum-scale=5 приближать сайт
 				/>
 
 				<Favicons />
@@ -29,6 +31,7 @@ const HeadProvider = ({ children }: { children: React.ReactNode }) => {
 					name="apple-mobile-web-app-status-bar-style"
 					content={'#181B1E'}
 				/>
+				<Link rel="manifest" href={'/manifest.json'} />
 			</Head>
 			{children}
 		</>

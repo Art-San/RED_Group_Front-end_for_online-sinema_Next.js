@@ -1,5 +1,5 @@
 import cn from 'classnames'
-import Image from "next/legacy/image"
+import Image from 'next/legacy/image'
 import Link from 'next/link'
 import { FC } from 'react'
 import { useQuery } from 'react-query'
@@ -27,13 +27,13 @@ const PopularMovie: FC = () => {
 
 	return (
 		<div className={cn(styles.block, styles.popular)}>
-			<SubHeading title="The most popular movie" />
+			<SubHeading title="Самый популярный фильм" />
 			{isLoading ? (
 				<SkeletonLoader className="h-48" />
 			) : (
 				movie && (
 					<>
-						<h3>Opened {movie.countOpened} times</h3>
+						<h3>Открыт {movie.countOpened} раз</h3>
 						<Link href={getMovieUrl(movie.slug)} legacyBehavior>
 							<a>
 								<Image
