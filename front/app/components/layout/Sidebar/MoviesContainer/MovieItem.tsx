@@ -1,4 +1,4 @@
-import Image from "next/legacy/image"
+import Image from 'next/legacy/image'
 import Link from 'next/link'
 import { FC } from 'react'
 
@@ -17,8 +17,8 @@ const MovieItem: FC<{ movie: IMovie }> = ({ movie }) => {
 		<div className={styles.item}>
 			<Link href={getMovieUrl(movie.slug)}>
 				<Image
-					width={65}
-					height={97}
+					width={55}
+					height={87}
 					src={movie.poster}
 					alt={movie.title}
 					draggable={false} // нельзя перетащить фото
@@ -27,7 +27,7 @@ const MovieItem: FC<{ movie: IMovie }> = ({ movie }) => {
 			</Link>
 			<div className={styles.info}>
 				<div>
-					<div className="styles title">{movie.title}</div>
+					<div className={styles.title}>{movie.title}</div>
 					<div className={styles.genres}>
 						{movie.genres.map((genre, idx) => (
 							<Link key={genre._id} href={getMovieUrl(genre.slug)}>

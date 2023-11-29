@@ -16,7 +16,7 @@
 import dynamic from 'next/dynamic'
 import { FC } from 'react'
 
-// import FavoriteMovie from './FavoriteMovie/FavoriteMovie'
+import FavoriteMovie from './FavoriteMovie/FavoriteMovie'
 import PopularMovie from './PopularMovie'
 
 const DynamicFavoriteMovie = dynamic(

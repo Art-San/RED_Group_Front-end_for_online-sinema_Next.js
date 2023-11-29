@@ -1,8 +1,8 @@
 .list {
-	@apply mt-11 animate-fade; //Верхний отступ, анимация
+	@apply mt-8 animate-fade; //Верхний отступ, анимация
 
 	.heading {
-		@apply font-bold text-xl mb-5 text-white capitalize; // capitalize Каждое новое слово с большой буквы
+		@apply font-bold text-base mb-5 text-white capitalize; // capitalize Каждое новое слово с большой буквы
 	}
 
 	.button {
@@ -30,22 +30,22 @@
 			width: 67%;
 
 			.title {
-				@apply text-white text-lg font-medium truncate;
+				@apply text-white text-xs font-medium truncate;
 			}
 
 			.genres {
-				@apply text-gray-600 text-sm;
+				@apply text-gray-600 text-xs;
 			}
 
 			.rating {
 				@apply flex items-center mb-2;
 
 				> svg {
-					@apply fill-yellow-700 mr-2 text-lg;
+					@apply fill-yellow-700 mr-2 text-xs;
 				}
 
 				> span {
-					@apply text-white font-medium pt-0.5;
+					@apply text-white text-xs font-medium pt-0.5;
 				}
 			}
 		}

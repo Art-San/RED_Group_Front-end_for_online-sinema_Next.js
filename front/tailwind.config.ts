@@ -37,7 +37,8 @@ const config: Config = {
 			},
 			spacing: {
 				0.5: '0.12rem',
-				layout: '2.75rem',
+				layout: '1.5rem',
+				// layout: '2.75rem',
 			},
 			fontSize: {
 				'2lg': '1.38rem',

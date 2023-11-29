@@ -1,5 +1,9 @@
 .heading {
-	@apply mb-3;
+	@apply mb-3 text-2xl;
+}
+
+.description {
+	@apply text-base;
 }
 
 .movies {
