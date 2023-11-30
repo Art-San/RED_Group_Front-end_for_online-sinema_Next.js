@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 import dynamic from 'next/dynamic'
+=======
+>>>>>>> e76aa4e4276fcf17606a5fd016c5294a57801ec2
 import Image from 'next/legacy/image'
 import Link from 'next/link'
 import { FC } from 'react'
@@ -26,7 +29,10 @@ const FavoriteItem: FC<{ movie: IMovie }> = ({ movie }) => {
 	const { user } = useAuth()
 	return (
 		<div className={styles.itemWrapper}>
+<<<<<<< HEAD
 			{/* {user && <DynamicFavoriteButton movieId={movie._id} />} */}
+=======
+>>>>>>> e76aa4e4276fcf17606a5fd016c5294a57801ec2
 			{user && <FavoriteButton movieId={movie._id} />}
 			<Link legacyBehavior href={getMovieUrl(movie.slug)}>
 				<a className={styles.item}>

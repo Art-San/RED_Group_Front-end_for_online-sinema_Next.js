@@ -58,7 +58,10 @@ const Content: FC<{ movie: IMovie }> = ({ movie }) => {
 			{/* Favorite Button*/}
 
 			{user && <FavoriteButton movieId={movie._id} />}
+<<<<<<< HEAD
 			{/* {user && <DynamicFavoriteButton movieId={movie._id} />} */}
+=======
+>>>>>>> e76aa4e4276fcf17606a5fd016c5294a57801ec2
 		</div>
 	)
 }
