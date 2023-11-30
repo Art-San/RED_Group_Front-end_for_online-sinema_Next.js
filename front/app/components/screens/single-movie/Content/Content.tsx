@@ -14,12 +14,12 @@ import FavoriteButton from '../FavoriteButton/FavoriteButton'
 import styles from './Content.module.scss'
 import ContentList from './ContentList/ContentList'
 
-// const DynamicFavoriteButton = dynamic(
-// 	() => import('../FavoriteButton/FavoriteButton'),
-// 	{
-// 		ssr: false,
-// 	}
-// )
+const DynamicFavoriteButton = dynamic(
+	() => import('../FavoriteButton/FavoriteButton'),
+	{
+		ssr: false,
+	}
+)
 
 // 15:42
 const Content: FC<{ movie: IMovie }> = ({ movie }) => {
@@ -57,11 +57,8 @@ const Content: FC<{ movie: IMovie }> = ({ movie }) => {
 
 			{/* Favorite Button*/}
 
-			{user && <FavoriteButton movieId={movie._id} />}
-<<<<<<< HEAD
-			{/* {user && <DynamicFavoriteButton movieId={movie._id} />} */}
-=======
->>>>>>> e76aa4e4276fcf17606a5fd016c5294a57801ec2
+			{/* {user && <FavoriteButton movieId={movie._id} />} */}
+			{user && <DynamicFavoriteButton movieId={movie._id} />}
 		</div>
 	)
 }
