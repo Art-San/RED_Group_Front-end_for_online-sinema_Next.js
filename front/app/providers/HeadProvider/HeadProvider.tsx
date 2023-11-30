@@ -31,7 +31,6 @@ const HeadProvider = ({ children }: { children: React.ReactNode }) => {
 					name="apple-mobile-web-app-status-bar-style"
 					content={'#181B1E'}
 				/>
-				<Link rel="manifest" href={'/manifest.json'} />
 			</Head>
 			{children}
 		</>
