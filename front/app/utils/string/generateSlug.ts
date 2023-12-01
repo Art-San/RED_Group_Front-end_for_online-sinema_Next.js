@@ -21,7 +21,7 @@ const translit = (str: string): string => {
 }
 
 const generateSlug = (str: string): string => {
-	let url: string = str.replace(/[\s]+/gi, '-')
+	let url: string = str.trim().replace(/[\s]+/gi, '-')
 	url = translit(url)
 	// eslint-disable-next-line
 	url = url
